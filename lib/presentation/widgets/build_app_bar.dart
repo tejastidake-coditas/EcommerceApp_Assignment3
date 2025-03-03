@@ -1,3 +1,4 @@
+import 'package:ecommerceapp_assignment3/presentation/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(
@@ -11,9 +12,7 @@ AppBar buildAppBar(
       onPressed: () {
         (Navigator.canPop(context))
             ? Navigator.pop(context)
-            : ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                behavior: SnackBarBehavior.floating,
-                content: Text("No previous page")));
+            : snackBar(context, "No previous page");
       },
     ),
     actions: [

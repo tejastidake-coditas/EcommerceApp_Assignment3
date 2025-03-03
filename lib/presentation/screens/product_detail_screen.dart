@@ -1,5 +1,6 @@
 import 'package:ecommerceapp_assignment3/core/constants/text_styles.dart';
 import 'package:ecommerceapp_assignment3/presentation/widgets/build_app_bar.dart';
+import 'package:ecommerceapp_assignment3/presentation/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerceapp_assignment3/data/product_model.dart';
 
@@ -188,9 +189,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         children: [
                           OutlinedButton(
                             onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text("Added to Cart")),
-                              );
+                              snackBar(context, "Added to Cart");
                             },
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(color: product.backgroundColor),
@@ -206,10 +205,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text("Proceeding to Checkout")),
-                                );
+                                snackBar(context, "Proceeding to Checkout");
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: product.backgroundColor,
@@ -236,9 +232,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             top: size.height * 0.15,
             right: 16,
             child: Hero(
-              tag: 'product_image_${widget.product.id}',
+              tag: 'product_image_${product.id}',
               child: Image.network(
-                widget.product.imageUrl,
+                product.imageUrl,
                 width: 260,
                 height: 260,
                 fit: BoxFit.contain,
